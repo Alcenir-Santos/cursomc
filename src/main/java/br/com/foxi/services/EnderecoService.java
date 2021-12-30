@@ -5,19 +5,18 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.foxi.domain.Produto;
-import br.com.foxi.repositories.ProdutoRepository;
+import br.com.foxi.domain.Endereco;
+import br.com.foxi.repositories.EnderecoRepository;
 import br.com.foxi.services.exceptions.ObjectNotFoundException;
-
 @Service
-public class ProdutoService {
+public class EnderecoService {
 	@Autowired
-	private ProdutoRepository repo;
+	private EnderecoRepository repo;
 	
-	
-	public Produto find(Integer id) {
-		Optional<Produto> obj = repo.findById(id);
+	public Endereco find(Integer id) {
+		Optional<Endereco> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				 "Objeto não encontrado! Id: " + id + ", Tipo: " + Produto.class.getName())); 
+				 "Objeto não encontrado! Id: " + id + ", Tipo: " + Endereco.class.getName())); 
 	}
+	
 }
