@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.com.foxi.domain.Categoria;
@@ -35,6 +38,7 @@ public class CategoriaService {
 		find(obj.getId());
 		return repo.save(obj);
 	}
+	
 	public void delete(Integer id) {
 		
 		find(id);
@@ -44,4 +48,24 @@ public class CategoriaService {
 			throw new DataIntegrityException("Não é possivel excluir a categoria pois possui produtos vinculados");
  		}
 	}
+	
+	public Page<Categoria> findPage(Integer page, Integer linesPage, String orderBy, String direction){
+		PageRequest pageRequest = PageRequest.of(page, linesPage,Direction.valueOf(direction),orderBy);
+		
+		return repo.findAll(pageRequest);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
