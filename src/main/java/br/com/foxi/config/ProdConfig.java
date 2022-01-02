@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Profile;
 import br.com.foxi.services.DBService;
 
 @Configuration
-@Profile("prod")
-public class DevConfig {
+@Profile("test")
+public class ProdConfig {
 	@Autowired
 	private DBService dbService;
 	
