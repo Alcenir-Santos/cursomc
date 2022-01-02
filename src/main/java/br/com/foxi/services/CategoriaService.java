@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.com.foxi.domain.Categoria;
-import br.com.foxi.domain.Cliente;
 import br.com.foxi.dto.CategoriaDTO;
 import br.com.foxi.repositories.CategoriaRepository;
 import br.com.foxi.services.exceptions.DataIntegrityException;

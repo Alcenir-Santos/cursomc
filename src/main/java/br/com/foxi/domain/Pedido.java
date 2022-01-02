@@ -38,7 +38,7 @@ public class Pedido implements Serializable {
 	private Cliente cliente;
 	
 	@ManyToOne
-	@JoinColumn(name= "endereco_endetrega_id")
+	@JoinColumn(name= "endereco_entrega_id")
 	private Endereco enderecoEntrega;
 	
 	@OneToMany(mappedBy = "id.pedido")

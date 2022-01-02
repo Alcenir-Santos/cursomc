@@ -17,7 +17,6 @@ import br.com.foxi.domain.Endereco;
 import br.com.foxi.domain.enums.TipoCliente;
 import br.com.foxi.dto.ClienteDTO;
 import br.com.foxi.dto.ClienteNewDTO;
-import br.com.foxi.repositories.CidadeRepository;
 import br.com.foxi.repositories.ClienteRepository;
 import br.com.foxi.repositories.EnderecoRepository;
 import br.com.foxi.services.exceptions.DataIntegrityException;
@@ -26,8 +25,6 @@ import br.com.foxi.services.exceptions.ObjectNotFoundException;
 public class ClienteService {
 	@Autowired
 	private ClienteRepository repo;
-	@Autowired
-	private CidadeRepository cidadeRepository;
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 	

@@ -2,30 +2,33 @@ package br.com.foxi.domain;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import br.com.foxi.domain.enums.EstadoPagamento;
 
 @Entity
+@JsonTypeName("pagamentoComCartao")
 public class PagamentoComCartao extends Pagamento {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer numeroPercela;
+	private Integer numeroParcela;
 	
 	public PagamentoComCartao() {
 		
 	}
 
-	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroPercela) {
+	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroParcela) {
 		super(id, estado, pedido);
-		this.setNumeroPercela(numeroPercela);
+		this.setNumeroParcela(numeroParcela);
 	}
 
-	public Integer getNumeroPercela() {
-		return numeroPercela;
+	public Integer getNumeroParcela() {
+		return numeroParcela;
 	}
 
-	public void setNumeroPercela(Integer numeroPercela) {
-		this.numeroPercela = numeroPercela;
+	public void setNumeroParcela(Integer numeroParcela) {
+		this.numeroParcela = numeroParcela;
 	}
 	
 }
