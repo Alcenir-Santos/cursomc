@@ -78,7 +78,7 @@ public class CategoriaResource {
 	public ResponseEntity<Page<CategoriaDTO>> findPage(
 			@RequestParam(value="page", defaultValue = "0") Integer page, 
 			@RequestParam(value="linesPage", defaultValue = "24") Integer linesPage, 
-			@RequestParam(value="orderBy", defaultValue = "name") String orderBy, 
+			@RequestParam(value="orderBy", defaultValue = "nome") String orderBy, 
 			@RequestParam(value="direction", defaultValue = "ASC") String direction
 			) {
 		

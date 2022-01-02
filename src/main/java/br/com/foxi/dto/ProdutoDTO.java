@@ -6,23 +6,25 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import br.com.foxi.domain.Categoria;
+import br.com.foxi.domain.Produto;
 
-public class CategoriaDTO implements Serializable {
+public class ProdutoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	
 	@NotEmpty(message = "Prenchimento Obrigatorio")
 	@Length(min = 5,max = 80, message = "O tamanho deve ser entre 5 a  80 caracteres")
-	private String name;
+	private String nome;
+	private Double preco;
 	
-	public CategoriaDTO() {
+	public ProdutoDTO() {
 		
 	}
 	
-	public CategoriaDTO(Categoria obj) {
+	public ProdutoDTO(Produto obj) {
 		id = obj.getId();
-		name = obj.getNome();
+		nome = obj.getNome();
+		preco = obj.getPreco();
 	}
 
 	public Integer getId() {
@@ -33,12 +35,20 @@ public class CategoriaDTO implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
 	}
 	
 	
