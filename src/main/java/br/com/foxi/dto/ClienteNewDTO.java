@@ -2,11 +2,24 @@ package br.com.foxi.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import br.com.foxi.services.validation.ClienteInsert;
+
+@ClienteInsert
 public class ClienteNewDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@NotEmpty(message = "Prenchimento Obrigatorio")
+	@Length(min = 5,max = 120, message = "O tamanho deve ser entre 5 a  120 caracteres")
 	private String nome;
+	
+	@NotEmpty(message = "Prenchimento Obrigatorio")
+	@Email(message = "Email Invalido")
 	private String email;
 	private String documento;
 	private Integer tipo;
