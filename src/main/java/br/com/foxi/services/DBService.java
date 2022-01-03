@@ -20,6 +20,7 @@ import br.com.foxi.domain.PagamentoComCartao;
 import br.com.foxi.domain.Pedido;
 import br.com.foxi.domain.Produto;
 import br.com.foxi.domain.enums.EstadoPagamento;
+import br.com.foxi.domain.enums.Perfil;
 import br.com.foxi.domain.enums.TipoCliente;
 import br.com.foxi.repositories.CategoriaRepository;
 import br.com.foxi.repositories.CidadeRepository;
@@ -113,15 +114,22 @@ public class DBService {
 		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
 		
 		Cliente cli1 = new Cliente(null, "Alcenir Santos","alceni_abs@hotmail.com","55700053071",TipoCliente.PESSOAFISICA,cpe.encode("123456"));
-		cli1.getTelefones().addAll(Arrays.asList("27999266867","27999914223"));
+		cli1.getTelefones().addAll(Arrays.asList("27999914223"));
 		
+		Cliente cli2 = new Cliente(null, "Igor Stefano","igor@hotmail.com","55700053071",TipoCliente.PESSOAFISICA,cpe.encode("123456"));
+		cli2.getTelefones().addAll(Arrays.asList("27999266867"));
+		cli2.addPerfil(Perfil.ADMIN);
+
 		Endereco e1 = new Endereco(null, "rua flores", "300", "AP 201", "Jardins", "29780000", cli1, c1);
 		Endereco e2 = new Endereco(null, "Avenida matos", "120", "sala 800", "centro", "29745000", cli1, c2);
+		Endereco e3 = new Endereco(null, "Avenida Maria Madalena", "286", null, "centro", "29749000", cli2, c2);
 		
 		cli1.getEndereco().addAll(Arrays.asList(e1,e2));
+		cli2.getEndereco().addAll(Arrays.asList(e3));
 		
-		clienteRepository.saveAll(Arrays.asList(cli1));
-		enderecoRepository.saveAll(Arrays.asList(e1,e2));
+		
+		clienteRepository.saveAll(Arrays.asList(cli1,cli2));
+		enderecoRepository.saveAll(Arrays.asList(e1,e2,e3));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
