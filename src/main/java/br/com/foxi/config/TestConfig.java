@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import br.com.foxi.services.DBService;
+import br.com.foxi.services.EmailService;
+import br.com.foxi.services.MockEmailService;
 
 @Configuration
-@Profile("dev")
+@Profile("test")
 public class TestConfig {
 	@Autowired
 	private DBService dbService;
@@ -21,4 +23,10 @@ public class TestConfig {
 		
 		return true;
 	}
+	
+	@Bean
+	public EmailService emailService() {
+		return new MockEmailService();
+	}
+	
 }
