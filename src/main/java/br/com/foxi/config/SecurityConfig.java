@@ -39,13 +39,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/h2-console/**",
 	};
 	private static final String[] PUBLIC_ROUTES_GET = {
-			"/h2-console/**",
 			"/produtos/**",
 			"/categorias/**",
 			"/clientes/**"
 	};
 	private static final String[] PUBLIC_ROUTES_POST = {
-			"/clientes/**"
+			"/clientes/**",
+			"/auth/forgot/**"
 	};
 
 	@Override
