@@ -15,11 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.foxi.domain.Cidade;
 import br.com.foxi.domain.Cliente;
 import br.com.foxi.domain.Endereco;
+import br.com.foxi.domain.enums.Perfil;
 import br.com.foxi.domain.enums.TipoCliente;
 import br.com.foxi.dto.ClienteDTO;
 import br.com.foxi.dto.ClienteNewDTO;
 import br.com.foxi.repositories.ClienteRepository;
 import br.com.foxi.repositories.EnderecoRepository;
+import br.com.foxi.security.UserSS;
+import br.com.foxi.services.exceptions.AuthorizationException;
 import br.com.foxi.services.exceptions.DataIntegrityException;
 import br.com.foxi.services.exceptions.ObjectNotFoundException;
 @Service
@@ -32,6 +35,11 @@ public class ClienteService {
 	private BCryptPasswordEncoder cpe;
 	
 	public Cliente find(Integer id) {
+		UserSS user =UserService.authenticated();
+		if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getid())){
+			throw new AuthorizationException("Acesso negado");
+		}
+
 		Optional<Cliente> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				 "Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName())); 
